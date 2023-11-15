@@ -1,25 +1,25 @@
-import { createTheme, Theme } from '@mui/material';
+import { createTheme } from '@mui/material';
 
 export const lightTheme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#000080'
+      main: '#0070ad'
     },
     secondary: {
-      main: '#ffb300'
+      main: '#12abdb'
     },
     info: {
-      main: '#8ee2f1'
+      main: '#12abdb'
     },
     error: {
-      main: '#ec4343'
+      main: '#e30021'
     },
     success: {
-      main: '#2b6e22'
+      main: '#2ea657'
     },
     background: {
-      default: '#FFFFFF'
+      default: '#f8f9fa'
     }
   },
   typography: {
@@ -37,9 +37,19 @@ export const lightTheme = createTheme({
     },
     button: {
       fontWeight: 600
-    }
-  }
-});
+    },
+  },
+  components: {
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          boxShadow: 'none' 
+        },
+      },
+    },
+  },
+},
+);
 
 export const darkTheme = createTheme({
   palette: {
@@ -62,5 +72,14 @@ export const darkTheme = createTheme({
     background: {
       default: '#181A20'
     }
-  }
+  },
+  components: {
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          boxShadow: 'none' 
+        },
+      },
+    },
+  },
 });
