@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box } from "@mui/material";
 import { Header } from "@/components/Header";
 
 export const Layout = ({ children, isDarkTheme, onThemeToggle }: any) => {
@@ -6,7 +6,7 @@ export const Layout = ({ children, isDarkTheme, onThemeToggle }: any) => {
     <>
       <Header isDarkTheme={isDarkTheme} onThemeToggle={onThemeToggle}/>
 
-      <Box flexGrow={1} overflow="auto" m={3}>
+      <Box overflow="auto" m={2} mt={6} textAlign="center">
         {children}
       </Box>
     </>

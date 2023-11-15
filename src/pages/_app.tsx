@@ -1,10 +1,10 @@
-import { useCallback, useEffect, useState } from 'react';
-import { CssBaseline, ThemeProvider } from '@mui/material';
-import type { AppProps } from 'next/app';
-import { darkTheme, lightTheme } from '@/themes/themes';
-import { Layout } from '@/components/Layout';
+import { useCallback, useEffect, useState } from "react";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import type { AppProps } from "next/app";
+import { darkTheme, lightTheme } from "@/themes/themes";
+import { Layout } from "@/components/Layout";
 
-const isDarkThemeKey = 'isDarkTheme';
+const isDarkThemeKey = "isDarkTheme";
 let item = false;
 
 export default function App({ Component, pageProps, }: AppProps) {
@@ -12,14 +12,14 @@ export default function App({ Component, pageProps, }: AppProps) {
 
   const handleChangeTheme = useCallback(() => {
     setIsDarkTheme((isDarkTheme) => {
-      if (typeof window !== 'undefined') localStorage.setItem(isDarkThemeKey, `${isDarkTheme}`);
+      if (typeof window !== "undefined") localStorage.setItem(isDarkThemeKey, `${isDarkTheme}`);
 
       return !isDarkTheme;
     });
   }, [ isDarkTheme ]);
 
   useEffect(() => {
-    item = localStorage.getItem(isDarkThemeKey) === 'false';
+    item = localStorage.getItem(isDarkThemeKey) === "false";
   }, []);
 
   return (

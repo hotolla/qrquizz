@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from "next/image";
 import { AppBar, Button, Switch, Stack } from "@mui/material";
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
 export const Header = ({ isDarkTheme, onThemeToggle }: Props) => {
   return (
 
-    <AppBar position='fixed' color='transparent'>
+    <AppBar position="fixed" color="transparent" sx={{mb: 1}}>
       <Stack
         direction="row"
         justifyContent="space-between"
@@ -28,7 +28,7 @@ export const Header = ({ isDarkTheme, onThemeToggle }: Props) => {
         <div>
           <Switch checked={isDarkTheme} onChange={onThemeToggle} size="small" />
 
-          <Button variant="outlined" size="small" sx={{borderRadius: '20px'}}>
+          <Button variant="outlined" size="small" sx={{borderRadius: "20px"}}>
             Logout
           </Button>
         </div>

@@ -5,4 +5,4 @@ export const Main = () => {
       <h4>You are already visited this location. Check out another one!</h4>
     </div>
   )
-}
+};
