@@ -1,11 +1,12 @@
 
 export interface IData {
   map: string,
+  designImage: string,
   designType: DesignType,
   pointsList: [
     [
-      x: number,
-      y: number,
+      x: number | null,
+      y: number | null,
       prymary: boolean,
       message: string
     ]
@@ -18,4 +19,8 @@ export enum DesignType {
   Type2 = "TYPE2",
   Type3 = "TYPE3",
   Type4 = "TYPE4",
+}
+
+export enum Types {
+  FetchData = 'FETCH_DATA'
 }
