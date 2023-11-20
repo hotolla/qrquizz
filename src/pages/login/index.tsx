@@ -1,8 +1,8 @@
 import * as React from "react";
-import { LoginPage } from "@/components/LoginPage/LoginPage";
+import { Login } from "@/components/Login";
 
 export default function Main() {
   return (
-    <LoginPage />
+    <Login />
   );
 };

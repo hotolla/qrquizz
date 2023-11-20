@@ -1,6 +1,7 @@
 
 export interface IData {
   map: string,
+  loginImg: string,
   designImage: string,
   designType: DesignType,
   pointsList: [

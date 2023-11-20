@@ -6,8 +6,8 @@ import { Container, Stack, Typography } from "@mui/material";
 export const Main = () => {
   const { map, designImage} = useContext(DataContext);
   return (
-    <Container sx={{ display: "flex", flexDirection:  "column", alignItems: "center" }}>
-      <h2>Location:</h2>
+    <Container sx={{ display: "flex", flexDirection:  "column", alignItems: "center", mt: 2 }}>
+      <Typography variant="h1">Location:</Typography>
 
       <Image
         priority={false}

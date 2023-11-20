@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material';
+import {customTypography} from "@/themes/typeography";
 
 export const lightTheme = createTheme({
   palette: {
@@ -22,23 +23,7 @@ export const lightTheme = createTheme({
       default: '#f8f9fa'
     }
   },
-  typography: {
-    caption: {
-      fontFamily: 'Lato',
-      lineHeight: 1.92
-    },
-    fontWeightLight: 100,
-    h1: {
-      fontFamily: 'Lora',
-      lineHeight: 1.15
-    },
-    h2: {
-      fontFamily: 'Lato'
-    },
-    button: {
-      fontWeight: 600
-    },
-  },
+  typography: customTypography,
   components: {
     MuiAppBar: {
       styleOverrides: {
@@ -73,6 +58,7 @@ export const darkTheme = createTheme({
       default: '#181A20'
     }
   },
+  typography: customTypography,
   components: {
     MuiAppBar: {
       styleOverrides: {
