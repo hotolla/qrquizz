@@ -3,6 +3,13 @@ import Image from "next/image";
 import { DataContext } from "@/components/DataProvider";
 import { Stack, Typography } from "@mui/material";
 import { CustomContainer } from "./CustomContainer";
+import { BasicPopover } from "./Popover";
+
+const popoverText2 = {
+  text: "center",
+  left: "0%",
+  top: "0%"
+}
 
 export const Main = () => {
   const { map, designImg} = useContext(DataContext);
@@ -10,13 +17,15 @@ export const Main = () => {
   return (
     <CustomContainer>
       <Typography variant="h1">Location:</Typography>
+      <BasicPopover text={popoverText2.text} left={popoverText2.left} top={popoverText2.top}/>
 
       <Image
         priority={false}
         src={map}
         alt="Map"
-        width={270}
+        width={300}
         height={280}
+        style={{position: "relative"}}
       />
 
       <Stack direction="row" spacing={1} alignItems= "center" justifyContent="center" mt={4}>

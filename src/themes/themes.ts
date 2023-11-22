@@ -55,7 +55,7 @@ export const darkTheme = createTheme({
       main: '#affdb1'
     },
     background: {
-      default: '#181A20'
+      default: '#280938'
     }
   },
   typography: customTypography,
