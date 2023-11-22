@@ -5,13 +5,13 @@ export const lightTheme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#0070ad'
+      main: '#f8f9fa'
     },
     secondary: {
-      main: '#12abdb'
+      main: '#14ABDC'
     },
     info: {
-      main: '#12abdb'
+      main: '#171515'
     },
     error: {
       main: '#e30021'
@@ -20,7 +20,7 @@ export const lightTheme = createTheme({
       main: '#2ea657'
     },
     background: {
-      default: '#f8f9fa'
+      default: '#FFFFFF'
     }
   },
   typography: customTypography,
@@ -40,10 +40,10 @@ export const darkTheme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#f5f0e8'
+      main: '#FEFEFE'
     },
     secondary: {
-      main: '#ffb300'
+      main: '#14ABDC'
     },
     info: {
       main: '#8ee2f1'

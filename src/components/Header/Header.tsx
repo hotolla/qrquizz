@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { AppBar, Button, Switch, Stack } from "@mui/material";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 
 interface Props {
   isDarkTheme: boolean,
@@ -14,8 +14,7 @@ export const Header = ({ isDarkTheme, onThemeToggle }: Props) => {
   };
 
   return (
-
-    <AppBar position="fixed" color="transparent" sx={{mb: 9}}>
+    <AppBar position="fixed" color="transparent" sx={{mt: 1}}>
       <Stack
         direction="row"
         justifyContent="space-between"
@@ -35,7 +34,7 @@ export const Header = ({ isDarkTheme, onThemeToggle }: Props) => {
         <div>
           <Switch checked={isDarkTheme} onChange={onThemeToggle} size="small" />
 
-          <Button variant="outlined" size="small" sx={{borderRadius: "20px"}} onClick={handleLogin}>
+          <Button variant="outlined" size="small" sx={{borderRadius: "20px"}} onClick={handleLogin} color="secondary">
             Logout
           </Button>
         </div>

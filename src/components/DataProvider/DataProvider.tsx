@@ -7,12 +7,14 @@ import * as dataApi from "../../api/data";
 
 interface IDataProviderValues extends IData {
   fetchData: (data: IData) => void;
+  fetchEventData: (data: IData) => void;
 }
 
 export const DataContext = createContext<IDataProviderValues>({
   ...initialState,
 
-  fetchData: () => {}
+  fetchData: () => {},
+  fetchEventData: () => {}
 });
 
 export const DataProvider = ({ children } : PropsWithChildren) => {
@@ -32,10 +34,26 @@ export const DataProvider = ({ children } : PropsWithChildren) => {
     });
   };
 
+  const fetchEventData = () => {
+    // dataApi.fetchData({
+    //   params: {
+    //     data: initialState,
+    //   },
+    //   signal: fetchTasksAbortController.current.signal
+    // }).then((data) => {
+    //   dispatch({ type: Types.FetchData, payload: data });
+    // }).catch((error) => {
+    //   return error
+    // });
+    const result = initialState;
+    return result;
+  };
+
   const providerValue = {
     ...state,
 
-    fetchData
+    fetchData,
+    fetchEventData
   };
 
   useEffect(() => {
@@ -52,7 +70,8 @@ export const DataProvider = ({ children } : PropsWithChildren) => {
       value={{
         ...state,
 
-        fetchData
+        fetchData,
+        fetchEventData
       }}
     >
       {children}

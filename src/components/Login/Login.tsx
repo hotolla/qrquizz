@@ -1,12 +1,16 @@
 import { useContext } from "react";
 import Image from "next/image";
+import Link from 'next/link'
 import { DataContext } from "@/components/DataProvider";
-import { Container, Stack, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
+import { AuthButtons } from "../Button";
+import { CustomContainer } from "../CustomContainer";
 
 export const Login = () => {
-  const { loginMessage, descriptionMessage, loginImg, designImage } = useContext(DataContext);
+  const { loginMessage, descriptionMessage, loginImg } = useContext(DataContext);
+
   return (
-    <Container sx={{ display: "flex", flexDirection:  "column", alignItems: "center", mt: 2 }}>
+    <CustomContainer>
       <Typography variant="h1">{loginMessage}</Typography>
 
       <Image
@@ -14,36 +18,16 @@ export const Login = () => {
         src={loginImg}
         alt="loginImg"
         width={270}
-        height={280}
+        height={250}
       />
 
       <Typography variant="h2">Get ready for an adventure!</Typography>
-      <Typography variant="subtitle1" sx={{mt: 2, mb: 2}}>{descriptionMessage}</Typography>
-      <Typography variant="h2">Login and have fun!</Typography>
-      <Typography variant="subtitle1" sx={{mt: 2}}>Privacy Policy</Typography>
+      <Typography variant="subtitle1">{descriptionMessage}</Typography>
 
-      {/*<Stack direction="row" spacing={1} alignItems= "center" justifyContent="center" mt={4}>*/}
-      {/*  <Image*/}
-      {/*    priority={false}*/}
-      {/*    src={designImage}*/}
-      {/*    alt="designImage"*/}
-      {/*    width={34}*/}
-      {/*    height={30}*/}
-      {/*  />*/}
-      {/*  <Typography>QR code location to visit</Typography>*/}
-      {/*</Stack>*/}
+      <AuthButtons />
 
-      {/*<Stack direction="row" spacing={1} alignItems= "center" justifyContent="center" mt={1}>*/}
-      {/*  <Image*/}
-      {/*    priority={false}*/}
-      {/*    src={designImage}*/}
-      {/*    alt="designImage"*/}
-      {/*    width={34}*/}
-      {/*    height={30}*/}
-      {/*    style={{filter: "saturate(0)"}}*/}
-      {/*  />*/}
-      {/*  <Typography>Visited QR code location</Typography>*/}
-      {/*</Stack>*/}
-    </Container>
+      <Typography variant="h2" sx={{mt: 0.5}}>Login and have fun!</Typography>
+      <Link href="https://www.capgemini.com/pl-pl/polityka-prywatnosci/" style={{textDecoration: "none", marginTop: 4}}>Privacy Policy</Link>
+    </CustomContainer>
   )
 };

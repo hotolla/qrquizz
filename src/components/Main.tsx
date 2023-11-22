@@ -1,12 +1,14 @@
 import { useContext } from "react";
 import Image from "next/image";
 import { DataContext } from "@/components/DataProvider";
-import { Container, Stack, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
+import { CustomContainer } from "./CustomContainer";
 
 export const Main = () => {
-  const { map, designImage} = useContext(DataContext);
+  const { map, designImg} = useContext(DataContext);
+  
   return (
-    <Container sx={{ display: "flex", flexDirection:  "column", alignItems: "center", mt: 2 }}>
+    <CustomContainer>
       <Typography variant="h1">Location:</Typography>
 
       <Image
@@ -20,7 +22,7 @@ export const Main = () => {
       <Stack direction="row" spacing={1} alignItems= "center" justifyContent="center" mt={4}>
         <Image
           priority={false}
-          src={designImage}
+          src={designImg}
           alt="designImage"
           width={34}
           height={30}
@@ -31,7 +33,7 @@ export const Main = () => {
       <Stack direction="row" spacing={1} alignItems= "center" justifyContent="center" mt={1}>
         <Image
           priority={false}
-          src={designImage}
+          src={designImg}
           alt="designImage"
           width={34}
           height={30}
@@ -39,6 +41,6 @@ export const Main = () => {
         />
         <Typography>Visited QR code location</Typography>
       </Stack>
-    </Container>
+    </CustomContainer>
   )
 };
