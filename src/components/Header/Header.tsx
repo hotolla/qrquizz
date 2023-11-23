@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { AppBar, Button, Switch, Stack } from "@mui/material";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 
 interface Props {
   isDarkTheme: boolean,
