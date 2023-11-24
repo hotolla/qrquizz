@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Popover, Typography, IconButton } from '@mui/material';
 import Image from "next/image";
 
-type PopverProps = {
+type Props = {
   top?: string | undefined,
   left?: string | undefined,
   right?: string | undefined,
@@ -10,7 +10,7 @@ type PopverProps = {
   text: string
 }
 
-export const BasicPopover = (popverProps: PopverProps) => {
+export const BasicPopover = (props: Props) => {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -25,20 +25,22 @@ export const BasicPopover = (popverProps: PopverProps) => {
   const id = open ? 'simple-popover' : undefined;
 
   return (
-    <div>
-      <IconButton onClick={handleClick}>
+    <>
+      <IconButton
+        style={{
+          position: "absolute",
+          top: props.top,
+          left: props.left,
+          right: props.right,
+          bottom: props.bottom,
+        }}
+        onClick={handleClick}
+      >
         <Image
           src={"/images/duck_blue.png"}
           alt="Map"
           width={25}
           height={16}
-          style={{
-            position: "absolute",
-            top: popverProps.top,
-            left: popverProps.left,
-            right: popverProps.right,
-            bottom: popverProps.bottom,
-          }}
         />
       </IconButton>
 
@@ -52,8 +54,8 @@ export const BasicPopover = (popverProps: PopverProps) => {
           horizontal: 'left',
         }}
       >
-        <Typography sx={{ p: 2 }}>{popverProps.text}</Typography>
+        <Typography sx={{ p: 2 }}>{props.text}</Typography>
       </Popover>
-    </div>
+    </>
   );
 }

@@ -7,8 +7,8 @@ import { BasicPopover } from "./Popover";
 
 const popoverText2 = {
   text: "center",
-  left: "0%",
-  top: "0%"
+  left: "10%",
+  top: "70%"
 }
 
 export const Main = () => {
@@ -17,16 +17,17 @@ export const Main = () => {
   return (
     <CustomContainer>
       <Typography variant="h1">Location:</Typography>
-      <BasicPopover text={popoverText2.text} left={popoverText2.left} top={popoverText2.top}/>
+      <div style={{ position: 'relative' }}>
+        <BasicPopover text={popoverText2.text} left={popoverText2.left} top={popoverText2.top}/>
 
-      <Image
-        priority={false}
-        src={map}
-        alt="Map"
-        width={300}
-        height={280}
-        style={{position: "relative"}}
-      />
+        <Image
+          priority={false}
+          src={map}
+          alt="Map"
+          width={300}
+          height={280}
+        />
+      </div>
 
       <Stack direction="row" spacing={1} alignItems= "center" justifyContent="center" mt={4}>
         <Image
