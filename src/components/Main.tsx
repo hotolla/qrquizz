@@ -12,13 +12,10 @@ export const Main = () => {
     <CustomContainer>
       <Typography variant="h1">Location:</Typography>
       <Box style={{ position: 'relative' }}>
-        {/* {pointsList.map((points) => (
-          points.map((point) => (
-            <BasicPopover key={point[0]} left={point[1]} top={point[2]} visited={point[3]} message={point[4]} />
-          ))
-        ))} */}
 
-        <BasicPopover key={pointsList[0][0]} left={pointsList[0][1]} top={pointsList[0][2]} visited={pointsList[0][3]} message={pointsList[0][4]} />
+        {pointsList.map((point) => (
+          <BasicPopover key={point[0]} left={point[1]} top={point[2]} visited={point[3]} message={point[4]} />
+        ))}
 
         <Image
           priority={false}
