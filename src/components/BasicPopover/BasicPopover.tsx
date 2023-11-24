@@ -3,11 +3,10 @@ import { Popover, Typography, IconButton } from '@mui/material';
 import Image from "next/image";
 
 type Props = {
-  top?: string | undefined,
-  left?: string | undefined,
-  right?: string | undefined,
-  bottom?: string | undefined,
-  text: string
+  left?: number | null,
+  top?: number | null,
+  message: string,
+  visited: boolean,
 }
 
 export const BasicPopover = (props: Props) => {
@@ -24,15 +23,15 @@ export const BasicPopover = (props: Props) => {
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
 
+  console.log(props.left);
+  
   return (
     <>
       <IconButton
         style={{
           position: "absolute",
-          top: props.top,
-          left: props.left,
-          right: props.right,
-          bottom: props.bottom,
+          left: props.left?.toString() + "%",
+          top: props.top?.toString() + "%",
         }}
         onClick={handleClick}
       >
@@ -54,7 +53,7 @@ export const BasicPopover = (props: Props) => {
           horizontal: 'left',
         }}
       >
-        <Typography sx={{ p: 2 }}>{props.text}</Typography>
+        <Typography sx={{ p: 2 }}>{props.message}</Typography>
       </Popover>
     </>
   );

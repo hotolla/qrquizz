@@ -1,24 +1,24 @@
 import { useContext } from "react";
 import Image from "next/image";
 import { DataContext } from "@/components/DataProvider";
-import { Stack, Typography } from "@mui/material";
+import { Stack, Typography, Box } from "@mui/material";
 import { CustomContainer } from "./CustomContainer";
-import { BasicPopover } from "./Popover";
-
-const popoverText2 = {
-  text: "center",
-  left: "10%",
-  top: "70%"
-}
+import { BasicPopover } from "./BasicPopover";
 
 export const Main = () => {
-  const { map, designImg} = useContext(DataContext);
-  
+  const { map, designImg, pointsList } = useContext(DataContext);
+  console.log(pointsList[0][1])
   return (
     <CustomContainer>
       <Typography variant="h1">Location:</Typography>
-      <div style={{ position: 'relative' }}>
-        <BasicPopover text={popoverText2.text} left={popoverText2.left} top={popoverText2.top}/>
+      <Box style={{ position: 'relative' }}>
+        {/* {pointsList.map((points) => (
+          points.map((point) => (
+            <BasicPopover key={point[0]} left={point[1]} top={point[2]} visited={point[3]} message={point[4]} />
+          ))
+        ))} */}
+
+        <BasicPopover key={pointsList[0][0]} left={pointsList[0][1]} top={pointsList[0][2]} visited={pointsList[0][3]} message={pointsList[0][4]} />
 
         <Image
           priority={false}
@@ -27,7 +27,7 @@ export const Main = () => {
           width={300}
           height={280}
         />
-      </div>
+      </Box>
 
       <Stack direction="row" spacing={1} alignItems= "center" justifyContent="center" mt={4}>
         <Image

@@ -1,3 +1,12 @@
+export interface IPointsList {
+  points: [
+    id: number,
+    left: number | null,
+    top: number | null,
+    visited: boolean,
+    message: string,
+  ][];
+}
 
 export interface IData {
   map: string,
@@ -5,17 +14,11 @@ export interface IData {
   designImg: string,
   errorImg: string,
   designType: DesignType,
-  pointsList: [
-    [
-      x: number | null,
-      y: number | null,
-      prymary: boolean,
-      message: string
-    ]
-  ],
+  pointsList: IPointsList['points'],
   loginMessage: string,
   descriptionMessage: string,
 }
+
 export enum DesignType {
   Duck = "DUCK",
   Type2 = "TYPE2",

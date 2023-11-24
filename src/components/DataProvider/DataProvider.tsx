@@ -35,16 +35,6 @@ export const DataProvider = ({ children } : PropsWithChildren) => {
   };
 
   const fetchEventData = () => {
-    // dataApi.fetchData({
-    //   params: {
-    //     data: initialState,
-    //   },
-    //   signal: fetchTasksAbortController.current.signal
-    // }).then((data) => {
-    //   dispatch({ type: Types.FetchData, payload: data });
-    // }).catch((error) => {
-    //   return error
-    // });
     const result = initialState;
     return result;
   };
@@ -67,12 +57,7 @@ export const DataProvider = ({ children } : PropsWithChildren) => {
 
   return (
     <DataContext.Provider
-      value={{
-        ...state,
-
-        fetchData,
-        fetchEventData
-      }}
+      value={providerValue}
     >
       {children}
     </DataContext.Provider>
