@@ -1,0 +1,16 @@
+{
+  "eventData": {
+    "eventId": "1",
+    "map": "/images/exhibitionfloor.png",
+    "designType": "Duck",
+    "pointsList": [
+      [ 1, 31, 37, true, "North" ],
+      [ 2, 41, 50, true, "West" ],
+      [ 3, 47, 63, true, "Center" ],
+      [ 4, 64, 80, true, "South" ],
+      [ 5, 69, 78, true, "East" ]
+    ],
+    "loginMessage": "Quack Treasure Hunt - can you find all hidden ducks?",
+    "descriptionMessage": "Find all QR Codes, answer the questions and check if you can crack the code to the Quack's safe at Capgemini stand"
+  }
+}

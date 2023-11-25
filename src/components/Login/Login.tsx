@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import {useContext, useEffect} from "react";
 import Image from "next/image";
 import Link from 'next/link'
 import { DataContext } from "@/components/DataProvider";
@@ -7,15 +7,15 @@ import { AuthButtons } from "../Button";
 import { CustomContainer } from "../CustomContainer";
 
 export const Login = () => {
-  const { loginMessage, descriptionMessage, loginImg } = useContext(DataContext);
+  const { loginMessage, descriptionMessage, fetchEventData } = useContext(DataContext);
 
   return (
     <CustomContainer>
       <Typography variant="h1">{loginMessage}</Typography>
 
       <Image
-        priority={false}
-        src={loginImg}
+        priority={true}
+        src={"/images/duck_explorer_2.png"}
         alt="loginImg"
         width={270}
         height={250}

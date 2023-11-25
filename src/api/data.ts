@@ -1,8 +1,8 @@
 import { AxiosRequestConfig } from "axios";
 import { api } from "@/api/api";
 
-export const fetchData = (config?: AxiosRequestConfig) => {
-  return api.get('/data', config).then(({ data }) => {
+export const fetchEventData = (config?: AxiosRequestConfig) => {
+  return api.get('/eventData', config).then(({ data }) => {
     return data;
   });
 };

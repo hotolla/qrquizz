@@ -10,9 +10,6 @@ export interface IPointsList {
 
 export interface IData {
   map: string,
-  loginImg: string,
-  designImg: string,
-  errorImg: string,
   designType: DesignType,
   pointsList: IPointsList['points'],
   loginMessage: string,

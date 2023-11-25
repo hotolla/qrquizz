@@ -6,10 +6,9 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link rel="icon" href="/favicon1.ico" sizes="any" />
+          <link rel="icon" href="/favicon1.ico" as="image" sizes="any" />
         </Head>
         <body>
-          <Main />
           <NextScript />
         </body>
       </Html>

@@ -11,6 +11,8 @@ type Props = {
 
 export const BasicPopover = (props: Props) => {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -20,11 +22,6 @@ export const BasicPopover = (props: Props) => {
     setAnchorEl(null);
   };
 
-  const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
-
-  console.log(props.left);
-  
   return (
     <>
       <IconButton

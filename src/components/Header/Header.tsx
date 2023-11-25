@@ -24,6 +24,7 @@ export const Header = ({ isDarkTheme, onThemeToggle }: Props) => {
       >
         <div>
           <Image
+            priority={true}
             src="images/logocap.svg"
             width={173}
             height={42}
