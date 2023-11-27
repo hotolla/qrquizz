@@ -1,10 +1,9 @@
-import {useContext, useEffect} from "react";
+import { useContext } from "react";
 import Image from "next/image";
 import { DataContext } from "@/components/DataProvider";
 import { Stack, Typography, Box } from "@mui/material";
 import { CustomContainer } from "./CustomContainer";
 import { BasicPopover } from "./BasicPopover";
-// import { fetchEventData } from "@/api/data";
 
 export const Main = () => {
   const { map, pointsList, descriptionMessage, fetchEventData } = useContext(DataContext);
