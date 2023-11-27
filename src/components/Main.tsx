@@ -6,7 +6,7 @@ import { CustomContainer } from "./CustomContainer";
 import { BasicPopover } from "./BasicPopover";
 
 export const Main = () => {
-  const { map, pointsList, descriptionMessage, fetchEventData } = useContext(DataContext);
+  const { map, pointsList } = useContext(DataContext);
 
   return (
     <CustomContainer>

@@ -64,7 +64,7 @@ export const QuizForm: React.FC<QuizFormProps> = React.forwardRef(({ question, o
             id={`question-${question.id}`}
             value={question.id}
             type="hidden"
-            ref={register}
+            // ref={register}
           />
 
           <FormGroup>
@@ -78,7 +78,7 @@ export const QuizForm: React.FC<QuizFormProps> = React.forwardRef(({ question, o
                       id={`answer-${answer.id}`}
                       type={question.isMultipleChoice() ? 'checkbox' : 'radio'}
                       value={answer.id}
-                      ref={register}
+                      // ref={register}
                     />
                   }
                   label={answer.getDescription()}
