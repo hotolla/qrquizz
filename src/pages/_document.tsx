@@ -9,6 +9,7 @@ class MyDocument extends Document {
           <link rel="icon" href="/favicon1.ico" as="image" sizes="any" />
         </Head>
         <body>
+          <Main />
           <NextScript />
         </body>
       </Html>
