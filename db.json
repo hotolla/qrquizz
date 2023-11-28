@@ -12,5 +12,24 @@
     ],
     "loginMessage": "Quack Treasure Hunt - can you find all hidden ducks?",
     "descriptionMessage": "Find all QR Codes, answer the questions and check if you can crack the code to the Quack's safe at Capgemini stand"
+  },
+  "users": [
+    {
+      "name": "user1",
+      "email": "user1@gmail.com",
+      "location": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false
+      },
+      "answeredQuestion": 0
+    }
+  ],
+  "questions": {
+    "questionsId": 1,
+    "questionMessage": "question message 1",
+    "questionMessage": ["answer 1", "answer 2", "answer 3"]
   }
 }

@@ -4,6 +4,7 @@ import type { AppProps } from "next/app";
 import { darkTheme, lightTheme } from "@/themes/themes";
 import { Layout } from "@/components/Layout";
 import { DataProvider } from "@/components/DataProvider";
+import { AuthProvider } from "@/components/AuthProvider";
 
 const isDarkThemeKey = "isDarkTheme";
 let item = false;
@@ -26,11 +27,13 @@ export default function App({ Component, pageProps, }: AppProps) {
   return (
     <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
       <CssBaseline />
-      <Layout isDarkTheme={isDarkTheme} onThemeToggle={handleChangeTheme}>
-        <DataProvider>
-          <Component {...pageProps} />
-        </DataProvider>
-      </Layout>
+      <AuthProvider>
+        <Layout isDarkTheme={isDarkTheme} onThemeToggle={handleChangeTheme}>
+          <DataProvider>
+            <Component {...pageProps} />
+          </DataProvider>
+        </Layout>
+      </AuthProvider>
     </ThemeProvider>
   );
 };

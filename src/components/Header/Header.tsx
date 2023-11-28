@@ -1,4 +1,6 @@
+import { useState, useEffect } from 'react';
 import Image from "next/image";
+import { useAuth } from "@/components/AuthProvider";
 import { AppBar, Button, Switch, Stack } from "@mui/material";
 import { useRouter } from "next/router";
 
@@ -8,6 +10,10 @@ interface Props {
 }
 export const Header = ({ isDarkTheme, onThemeToggle }: Props) => {
   const router = useRouter();
+  const { user } = useAuth();
+  const [ isClient, setIsClient] = useState(false)
+
+  console.log(user);
 
   const handleLogin = () => {
     router.push("/login");
@@ -35,9 +41,15 @@ export const Header = ({ isDarkTheme, onThemeToggle }: Props) => {
         <div>
           <Switch checked={isDarkTheme} onChange={onThemeToggle} size="small" />
 
-          <Button variant="outlined" size="small" sx={{borderRadius: "20px"}} onClick={handleLogin} color="secondary">
-            Logout
-          </Button>
+          {isClient && user?.email ? (
+            <Button variant="outlined" size="small" sx={{borderRadius: "20px"}} onClick={handleLogin} color="secondary">
+              Login
+            </Button>
+          ) : (
+            <Button variant="outlined" size="small" sx={{borderRadius: "20px"}} onClick={handleLogin} color="secondary">
+              Logout
+            </Button>
+          )}
         </div>
       </Stack>
     </AppBar>

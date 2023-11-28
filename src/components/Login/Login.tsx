@@ -1,13 +1,13 @@
-import {useContext, useEffect} from "react";
+import { useContext } from "react";
 import Image from "next/image";
-import Link from 'next/link'
+import Link from "next/link";
 import { DataContext } from "@/components/DataProvider";
 import { Typography } from "@mui/material";
 import { AuthButtons } from "../Button";
 import { CustomContainer } from "../CustomContainer";
 
 export const Login = () => {
-  const { loginMessage, descriptionMessage, fetchEventData } = useContext(DataContext);
+  const { loginMessage, descriptionMessage } = useContext(DataContext);
 
   return (
     <CustomContainer>

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { forwardRef, useEffect, useRef} from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import {
   FormControl,
@@ -29,7 +29,7 @@ interface FormValues {
   answerId: number[];
 }
 
-export const QuizForm: React.FC<QuizFormProps> = React.forwardRef(({ question, onSubmit }, ref) => {
+export const QuizForm: React.FC<QuizFormProps> = forwardRef(({ question, onSubmit }, ref) => {
   const { handleSubmit, register } = useForm<FormValues>();
   const formRef = useRef<HTMLFormElement | null>(null);
 
