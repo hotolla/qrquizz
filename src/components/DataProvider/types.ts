@@ -16,6 +16,12 @@ export interface IData {
   descriptionMessage: string,
 }
 
+export interface IQuiz {
+  questionsId: number,
+  questionMessage: string,
+  questionAnswers: string[],
+}
+
 export enum DesignType {
   Duck = "DUCK",
   Type2 = "TYPE2",
@@ -24,5 +30,6 @@ export enum DesignType {
 }
 
 export enum Types {
-  FetchData = 'FETCH_DATA'
+  FetchData = 'FETCH_DATA',
+  FetchQuiz = 'FETCH_QUIZ'
 }

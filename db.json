@@ -27,9 +27,9 @@
       "answeredQuestion": 0
     }
   ],
-  "questions": {
+  "quiz": {
     "questionsId": 1,
     "questionMessage": "question message 1",
-    "questionMessage": ["answer 1", "answer 2", "answer 3"]
+    "questionAnswers": ["answer 1", "answer 2", "answer 3"]
   }
 }
