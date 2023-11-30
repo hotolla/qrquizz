@@ -6,16 +6,9 @@ import { CustomContainer } from './CustomContainer';
 
 const RadioButton = styled(Button)({
   borderRadius: '50px',
-  border: '1px solid black',
   padding: '6px 12px',
   variant: 'outlined',
   minWidth: '280px',
-  color: 'black',
-  '&:hover': {
-    backgroundColor: '#00E6E3',
-    color: 'white',
-  },
-
 });
 
 export const Quiz = () => {
@@ -42,23 +35,23 @@ export const Quiz = () => {
       <form onSubmit={handleSubmit}>
         <FormControl sx={{ m: 3 }} variant="standard">
           
-          <Typography variant="h2" mb={2}> Pop quiz: MUI is... </Typography>
+          <Typography variant="h3" mb={2}> Pop quiz: MUI is... </Typography>
             
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16}}>
             
-            <RadioButton color='success'
+            <RadioButton color='success' variant='outlined'
               onClick={() => handleButtonClick('correct')}
             >
               The correct!
             </RadioButton>
 
-            <RadioButton color='success'
+            <RadioButton color='success' variant='outlined'
               onClick={() => handleButtonClick('best')}
             >
               The second!
             </RadioButton>
             
-            <RadioButton color='success'
+            <RadioButton color='success' variant='outlined'
               onClick={() => handleButtonClick('worst')}
             >
               The worst.
