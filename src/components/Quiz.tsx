@@ -1,59 +1,75 @@
 import React, { useState } from 'react';
-import {Button, FormControl, FormHelperText, FormLabel, Typography} from '@mui/material';
-import { fetchQuizData } from '@/api/quiz';
+import { useRouter } from "next/router";
+import { Button, FormControl, Typography } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { CustomContainer } from './CustomContainer';
+
+const RadioButton = styled(Button)({
+  borderRadius: '50px',
+  border: '1px solid black',
+  padding: '6px 12px',
+  variant: 'outlined',
+  minWidth: '280px',
+  color: 'black',
+  '&:hover': {
+    backgroundColor: '#00E6E3',
+    color: 'white',
+  },
+
+});
 
 export const Quiz = () => {
-  const [value, setValue] = useState('');
-  const [error, setError] = useState(false);
-  const [helperText, setHelperText] = useState('');
+  const [ value, setValue ] = useState('');
+  const router = useRouter();
 
   const handleButtonClick = (selectedValue: string) => {
     setValue(selectedValue);
-    setHelperText(' ');
-    setError(false);
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (value === 'best') {
-      setHelperText('You got it!');
-      setError(false);
-    } else if (value === 'worst') {
-      setHelperText('Sorry, wrong answer!');
-      setError(true);
-    } else {
-      setHelperText('Please select an option.');
-      setError(true);
+    if (value === 'correct') {
+      router.push("/");
+    }  else {
+      router.push("/error");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <FormControl sx={{ m: 3 }} error={error} variant="standard">
-        {/*<FormLabel id="quiz">Pop quiz: MUI is...</FormLabel>*/}
-        <Typography variant="h2" mb={2}> Pop quiz: MUI is... </Typography>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <Button
-            onClick={() => handleButtonClick('best')}
-            variant="contained"
-            sx={{ background: value === 'best' ? 'red' : 'inherit', mb: 1, width: '150px', borderRadius: '50px' }}
-          >
-            The best!
+    <CustomContainer>
+
+      <form onSubmit={handleSubmit}>
+        <FormControl sx={{ m: 3 }} variant="standard">
+          
+          <Typography variant="h2" mb={2}> Pop quiz: MUI is... </Typography>
+            
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16}}>
+            
+            <RadioButton color='success'
+              onClick={() => handleButtonClick('correct')}
+            >
+              The correct!
+            </RadioButton>
+
+            <RadioButton color='success'
+              onClick={() => handleButtonClick('best')}
+            >
+              The second!
+            </RadioButton>
+            
+            <RadioButton color='success'
+              onClick={() => handleButtonClick('worst')}
+            >
+              The worst.
+            </RadioButton>
+          </div>
+
+          <Button sx={{ mt: 2, borderRadius: "50px" }} type="submit" variant="contained" color="success">
+            Answer
           </Button>
-          <Button
-            onClick={() => handleButtonClick('worst')}
-            variant="contained"
-            sx={{ background: value === 'worst' ? 'red' : 'inherit', width: '150px', borderRadius: '50px' }}
-          >
-            The worst.
-          </Button>
-        </div>
-        <FormHelperText>{helperText}</FormHelperText>
-        <Button sx={{ mt: 1, width: '150px', borderRadius: "50px" }} type="submit" variant="outlined" color="secondary">
-          Answer
-        </Button>
-      </FormControl>
-    </form>
+        </FormControl>
+      </form>
+    </CustomContainer>
   );
 };

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
+import { useRouter } from "next/router";
 import Image from "next/image";
 import { useAuth } from "@/components/AuthProvider";
 import { AppBar, Button, Switch, Stack } from "@mui/material";
-import { useRouter } from "next/router";
 
 interface Props {
   isDarkTheme: boolean,
