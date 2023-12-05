@@ -17,9 +17,18 @@ export const DataContext = createContext<IDataProviderValues>({
   fetchEvent: () => {}
 });
 
+const sessionStorageKey = 'eventId';
+
 export const DataProvider = ({ children } : PropsWithChildren) => {
-  const [ state, dispatch ] = useReducer(reducer, initialState);
   const fetchEventAbortController = useRef(new AbortController());
+  const [ state, dispatch ] = useReducer(reducer, initialState, () => {
+
+  if (typeof window !== 'undefined') {
+    const sessionStorageData = JSON.parse(sessionStorage?.getItem(sessionStorageKey) || '{}');
+    return sessionStorageData || initialState;
+  }
+  return initialState;
+});
 
   const fetchEvent = (id: EventId) => {
     dataApi.fetchEvent(id, {
@@ -36,10 +45,11 @@ export const DataProvider = ({ children } : PropsWithChildren) => {
   };
 
   useEffect(() => {
-    return () => {
-      fetchEventAbortController.current.abort();
-    };
-  }, []);
+    sessionStorage.setItem(sessionStorageKey, JSON.stringify(state.event?.id));
+    // return () => {
+    //   fetchEventAbortController.current.abort();
+    // };
+  }, [ state ]);
 
   return (
     <DataContext.Provider

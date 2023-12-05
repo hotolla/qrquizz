@@ -9,6 +9,7 @@ export interface IPointsList {
 }
 
 export interface IEvent {
+  id: number | string,
   map: string,
   designType: DesignType,
   pointsList: IPointsList['points'],
