@@ -1,13 +1,15 @@
+'use client'
+
 import {useContext, useEffect} from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 import { DataContext } from "@/components/DataProvider";
 import { Typography } from "@mui/material";
-import { AuthButtons } from "../Button";
-import { CustomContainer } from "../CustomContainer";
+import { AuthButtons } from "../../components/Button";
+import { CustomContainer } from "../../components//CustomContainer";
 
-export const Login = () => {
+export default async function Page(){
   const { loginMessage, descriptionMessage } = useContext(DataContext);
   const searchParams = useSearchParams();
   const pathname = usePathname();

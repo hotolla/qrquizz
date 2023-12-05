@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { useSearchParams } from 'next/navigation';
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import type { AppProps } from "next/app";
 import { darkTheme, lightTheme } from "@/themes/themes";
@@ -11,6 +12,7 @@ let item = false;
 
 export default function App({ Component, pageProps, }: AppProps) {
   const [ isDarkTheme, setIsDarkTheme ] = useState(item);
+  const searchParams = useSearchParams();
 
   const handleChangeTheme = useCallback(() => {
     setIsDarkTheme((isDarkTheme) => {

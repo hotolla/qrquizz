@@ -1,11 +1,12 @@
 import { useContext } from "react";
+import { useSearchParams } from 'next/navigation';
 import Image from "next/image";
 import { DataContext } from "@/components/DataProvider";
 import { Stack, Typography, Box } from "@mui/material";
-import { CustomContainer } from "./CustomContainer";
-import { BasicPopover } from "./BasicPopover";
+import { CustomContainer } from "../components/CustomContainer";
+import { BasicPopover } from "../components/BasicPopover";
 
-export const Main = () => {
+export default async function Page(){
   const { map, pointsList } = useContext(DataContext);
 
   return (
