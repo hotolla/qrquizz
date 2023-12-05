@@ -24,7 +24,6 @@ const localStorageKey = 'auth';
 
 export const AuthProvider = ({ children } : PropsWithChildren) => {
   const [ state, dispatch ] = useReducer(reducer, initialState, () => {
-    console.log(initialState)
     if (typeof window !== 'undefined') {
       const localStorageData = JSON.parse(localStorage?.getItem(localStorageKey) || '{}');
 

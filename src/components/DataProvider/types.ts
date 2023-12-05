@@ -8,12 +8,16 @@ export interface IPointsList {
   ][];
 }
 
-export interface IData {
+export interface IEvent {
   map: string,
   designType: DesignType,
   pointsList: IPointsList['points'],
   loginMessage: string,
   descriptionMessage: string,
+}
+
+export interface IState {
+  event: IEvent | null
 }
 
 export interface IQuiz {

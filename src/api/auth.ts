@@ -8,7 +8,7 @@ export interface ILoginData {
 }
 
 export const login = (config?: IUser | null) => {
-  return api.get('/users', config).then(({ data }) => {
+  return api.get('/users').then(({ data }) => {
     console.log(data)
     return data;
   });

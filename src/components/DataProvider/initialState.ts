@@ -1,12 +1,9 @@
-import { DesignType, IData } from "@/components/DataProvider/types";
+import { DesignType, IState } from "@/components/DataProvider/types";
 
-export const initialState: IData = {
-  map: "",
-  designType: DesignType.Duck,
-  pointsList: [],
-  loginMessage: "",
-  descriptionMessage: "",
-}
+export const initialState: IState = {
+  event: null
+};
+
 //  when open link -> first req IData -> fetchEventData(evenId)
 // 2 request: if login sent {user.email, locationId} fetchQuestionsData(userEmail, locationId)
 // user.email after login in google => {}

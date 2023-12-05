@@ -7,11 +7,11 @@ import { AuthButtons } from "../Button";
 import { CustomContainer } from "../CustomContainer";
 
 export const Login = () => {
-  const { loginMessage, descriptionMessage } = useContext(DataContext);
+  const { event } = useContext(DataContext);
 
-  return (
+  return !!event && (
     <CustomContainer>
-      <Typography variant="h1">{loginMessage}</Typography>
+      <Typography variant="h1">{event?.loginMessage}</Typography>
 
       <Image
         priority={true}
@@ -22,7 +22,7 @@ export const Login = () => {
       />
 
       <Typography variant="h2">Get ready for an adventure!</Typography>
-      <Typography variant="subtitle1">{descriptionMessage}</Typography>
+      <Typography variant="subtitle1">{event?.descriptionMessage}</Typography>
 
       <AuthButtons />
 

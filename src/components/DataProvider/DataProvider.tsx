@@ -1,42 +1,43 @@
 import { PropsWithChildren, createContext, useEffect, useReducer, useRef } from 'react';
 import { reducer } from './reducer';
-import { Types } from './types';
-import { IData } from "@/components/DataProvider/types";
+import { IState, Types } from './types';
+import { IEvent } from "@/components/DataProvider/types";
 import { initialState } from "@/components/DataProvider/initialState";
 import * as dataApi from "../../api/data";
 
-interface IDataProviderValues extends IData {
-  fetchEventData: () => void;
+export type EventId = number | string
+
+interface IDataProviderValues extends IState {
+  fetchEvent: (id: EventId) => void;
 }
 
 export const DataContext = createContext<IDataProviderValues>({
   ...initialState,
 
-  fetchEventData: () => {}
+  fetchEvent: () => {}
 });
 
 export const DataProvider = ({ children } : PropsWithChildren) => {
   const [ state, dispatch ] = useReducer(reducer, initialState);
-  const fetchTasksAbortController = useRef(new AbortController());
+  const fetchEventAbortController = useRef(new AbortController());
 
-  const fetchEventData = () => {
-    dataApi.fetchEventData().then((dataEvent) => {
-      dispatch({ type: Types.FetchData, payload: dataEvent });
+  const fetchEvent = (id: EventId) => {
+    dataApi.fetchEvent(id, {
+      signal: fetchEventAbortController.current.signal
+    }).then((event) => {
+      dispatch({ type: Types.FetchData, payload: event });
     })
   };
 
   const providerValue = {
     ...state,
 
-    fetchEventData
+    fetchEvent
   };
 
   useEffect(() => {
-    fetchEventData();
-
     return () => {
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      fetchTasksAbortController.current.abort();
+      fetchEventAbortController.current.abort();
     };
   }, []);
 
