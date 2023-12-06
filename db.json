@@ -39,8 +39,14 @@
       "id": 2
     }
   ],
-  "authType": {
-    "google": "google.com",
-    "githab": "githab.com"
-  }
+  "login-url": [
+    {
+      "type": "google",
+      "link": "google.com",
+    },
+    {
+      "type": "github",
+      "link": "github.com"
+    }
+  ]
 }
