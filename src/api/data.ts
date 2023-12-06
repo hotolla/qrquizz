@@ -1,16 +1,15 @@
 import { AxiosRequestConfig } from "axios";
 import { api } from "@/api/api";
-import { EventId } from "@/components/DataProvider";
+import { EventId, LocationId} from "@/components/DataProvider";
 
-export const fetchEventData = (config?: AxiosRequestConfig) => {
-  return api.get('/eventData', config).then(({ data }) => {
+export const fetchEvent = (id: EventId, config?: AxiosRequestConfig) => {
+  return api.get(`/events/${id}`, config).then(({ data }) => {
     return data;
   });
 };
 
-export const fetchEvent = (id: EventId, config?: AxiosRequestConfig) => {
-  return api.get(`/events/${id}`, config).then(({ data }) => {
-    console.log(data)
+export const fetchLocationId = (id: LocationId, config?: AxiosRequestConfig) => {
+  return api.get(`/locations/${id}`, config).then(({ data }) => {
     return data;
   });
 };

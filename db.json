@@ -33,5 +33,14 @@
       "loginMessage": "Quack Treasure Hunt - can you find all hidden ducks?",
       "descriptionMessage": "Find all QR Codes, answer the questions and check if you can crack the code to the Quack's safe at Capgemini stand"
     }
-  ]
+  ],
+  "locations": [
+    {
+      "id": 2
+    }
+  ],
+  "authType": {
+    "google": "google.com",
+    "githab": "githab.com"
+  }
 }

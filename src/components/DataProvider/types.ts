@@ -1,3 +1,5 @@
+import {fetchLocationId} from "@/api/data";
+
 export interface IPointsList {
   points: [
     id: number,
@@ -36,5 +38,6 @@ export enum DesignType {
 
 export enum Types {
   FetchData = 'FETCH_DATA',
+  FetchLocationId = 'FETCH_LOCATION_ID',
   FetchQuiz = 'FETCH_QUIZ'
 }
