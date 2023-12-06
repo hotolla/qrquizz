@@ -15,7 +15,7 @@ export const redirect = () => {
 };
 
 export const redirect2 = (method: string) => {
-  return api.get('/authType').then(( data ) => {
+  return api.get(`/loginUrl?type=${method}`).then(( data ) => {
     console.log(method)
     return data;
   });

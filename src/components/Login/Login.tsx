@@ -9,7 +9,9 @@ import { CustomContainer } from "../CustomContainer";
 export const Login = () => {
   const { event } = useContext(DataContext);
 
-  return !!event && (
+  return (
+    <>
+      !!event && (
     <CustomContainer>
       <Typography variant="h1">{event?.loginMessage}</Typography>
 
@@ -30,4 +32,7 @@ export const Login = () => {
       <Link href="https://www.capgemini.com/pl-pl/polityka-prywatnosci/" style={{textDecoration: "none", marginTop: 4}}>Privacy Policy</Link>
     </CustomContainer>
   )
+  </>
+  )
+
 };

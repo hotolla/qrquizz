@@ -7,6 +7,7 @@ import Stack from '@mui/material/Stack';
 import GoogleIcon from '@mui/icons-material/Google';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { useAuth } from '@/components/AuthProvider';
+import { redirect } from 'next/dist/server/api-utils';
 
 export const AuthButtons = () => {
   const { isAuthenticated, user, login } = useAuth();
@@ -25,6 +26,8 @@ export const AuthButtons = () => {
   const googleAuthentication2 = ( method: string) => {
     authApi.redirect2(method).then(({data}) => {
       console.log(data);
+      const url = JSON.stringify(data.link);      
+      router.replace(url);
     })
   };
 

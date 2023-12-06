@@ -47,7 +47,7 @@ export const DataProvider = ({ children } : PropsWithChildren) => {
       signal: fetchEventAbortController.current.signal
     }).then((event) => {
       // add reducer, check db.json
-      // dispatch({ type: Types.FetchLocationId, payload: event });
+      dispatch({ type: Types.FetchData, payload: event });
     })
   };
 

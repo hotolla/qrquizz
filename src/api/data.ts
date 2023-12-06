@@ -29,3 +29,10 @@ export const fetchLocationId = (id: LocationId, config?: AxiosRequestConfig) => 
 // CLICK GITHUB - request to localhost:8080/api/login-url?type=GITHUB GET
 // RECEIVE url - google.com
 // REDIRECT USER TO github.com
+
+export const fetchToken = (token: EventId, config?: AxiosRequestConfig) => {
+  return api.get(`/token/${token}`, config).then(({ data }) => {
+    //user
+    return data;
+  });
+};

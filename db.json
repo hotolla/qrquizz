@@ -37,10 +37,17 @@
   "locations": [
     {
       "id": 2
-    }
+    } 
   ],
-  "authType": {
-    "google": "google.com",
-    "githab": "githab.com"
+  "loginUrl": {
+    "link": "google.com"
+  },
+  "token": {
+      "name": "user1",
+      "email": "user1@gmail.com",
+      "locations": [
+        "1", "2", "3"
+      ],
+      "answeredQuestion": 0
   }
 }
