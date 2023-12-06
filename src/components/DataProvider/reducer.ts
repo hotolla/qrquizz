@@ -1,22 +1,18 @@
-import { IData, Types } from './types';
+import { IEvent, IState, Types } from './types';
 
 export type Action =
-  | { type: Types.FetchData; payload: IData }
+  | { type: Types.FetchData; payload: IEvent }
 
-export const reducer = (state: IData, { type, payload }: Action) => {
+export const reducer = (state: IState, { type, payload }: Action) => {
   switch (type) {
-  case Types.FetchData:
-    return {
-      ...state,
+    case Types.FetchData:
+      return {
+        ...state,
 
-      map: payload.map,
-      designType: payload.designType,
-      pointsList: payload.pointsList,
-      loginMessage: payload.loginMessage,
-      descriptionMessage: payload.descriptionMessage
-    };
+        event: payload
+      };
 
-  default:
-    return state;
-  }
+    default:
+      return state;
+    }
 };

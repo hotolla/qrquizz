@@ -1,18 +1,4 @@
 {
-  "eventData": {
-    "eventId": "1",
-    "map": "/images/exhibitionfloor.png",
-    "designType": "Duck",
-    "pointsList": [
-      [ 1, 31, 37, true, "North" ],
-      [ 2, 41, 50, true, "West" ],
-      [ 3, 47, 63, true, "Center" ],
-      [ 4, 64, 80, true, "South" ],
-      [ 5, 69, 78, true, "East" ]
-    ],
-    "loginMessage": "Quack Treasure Hunt - can you find all hidden ducks?",
-    "descriptionMessage": "Find all QR Codes, answer the questions and check if you can crack the code to the Quack's safe at Capgemini stand"
-  },
   "users": [
     {
       "name": "user1",
@@ -31,5 +17,30 @@
     "questionsId": 1,
     "questionMessage": "question message 1",
     "questionAnswers": ["answer 1", "answer 2", "answer 3"]
+  },
+  "events": [
+    {
+      "id": 1,
+      "map": "/images/exhibitionfloor.png",
+      "designType": "Duck",
+      "pointsList": [
+        [ 1, 31, 37, true, "North" ],
+        [ 2, 41, 50, true, "West" ],
+        [ 3, 47, 63, true, "Center" ],
+        [ 4, 64, 80, true, "South" ],
+        [ 5, 69, 78, true, "East" ]
+      ],
+      "loginMessage": "Quack Treasure Hunt - can you find all hidden ducks?",
+      "descriptionMessage": "Find all QR Codes, answer the questions and check if you can crack the code to the Quack's safe at Capgemini stand"
+    }
+  ],
+  "locations": [
+    {
+      "id": 2
+    }
+  ],
+  "authType": {
+    "google": "google.com",
+    "githab": "githab.com"
   }
 }

@@ -1,44 +1,69 @@
 import { PropsWithChildren, createContext, useEffect, useReducer, useRef } from 'react';
 import { reducer } from './reducer';
-import { Types } from './types';
-import { IData } from "@/components/DataProvider/types";
+import { IState, Types } from './types';
+import { IEvent } from "@/components/DataProvider/types";
 import { initialState } from "@/components/DataProvider/initialState";
 import * as dataApi from "../../api/data";
+import {fetchLocationId} from "../../api/data";
 
-interface IDataProviderValues extends IData {
-  fetchEventData: () => void;
+export type EventId = number | string
+export type LocationId = number | string
+
+interface IDataProviderValues extends IState {
+  fetchEvent: (id: EventId) => void;
+  fetchLocationId: (id: LocationId) => void;
 }
 
 export const DataContext = createContext<IDataProviderValues>({
   ...initialState,
 
-  fetchEventData: () => {}
+  fetchEvent: () => {},
+  fetchLocationId: () => {}
 });
 
-export const DataProvider = ({ children } : PropsWithChildren) => {
-  const [ state, dispatch ] = useReducer(reducer, initialState);
-  const fetchTasksAbortController = useRef(new AbortController());
+const localStorageKey = 'eventId';
 
-  const fetchEventData = () => {
-    dataApi.fetchEventData().then((dataEvent) => {
-      dispatch({ type: Types.FetchData, payload: dataEvent });
+export const DataProvider = ({ children } : PropsWithChildren) => {
+  const fetchEventAbortController = useRef(new AbortController());
+  const [ state, dispatch ] = useReducer(reducer, initialState, () => {
+  //ask about localStorage
+  // if (typeof window !== 'undefined') {
+  //   const localStorageData = JSON.parse(localStorage?.getItem(localStorageKey) || '{}');
+  //   return localStorageData || initialState;
+  // }
+  return initialState;
+});
+
+  const fetchEvent = (id: EventId) => {
+    dataApi.fetchEvent(id, {
+      signal: fetchEventAbortController.current.signal
+    }).then((event) => {
+      dispatch({ type: Types.FetchData, payload: event });
+    })
+  };
+
+  const fetchLocationId = (id: LocationId) => {
+    dataApi.fetchLocationId(id, {
+      signal: fetchEventAbortController.current.signal
+    }).then((event) => {
+      // add reducer, check db.json
+      // dispatch({ type: Types.FetchLocationId, payload: event });
     })
   };
 
   const providerValue = {
     ...state,
 
-    fetchEventData
+    fetchEvent,
+    fetchLocationId
   };
 
   useEffect(() => {
-    fetchEventData();
-
+    localStorage.setItem(localStorageKey, JSON.stringify(state.event?.id));
     return () => {
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      fetchTasksAbortController.current.abort();
+      fetchEventAbortController.current.abort();
     };
-  }, []);
+  }, [ state ]);
 
   return (
     <DataContext.Provider

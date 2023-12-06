@@ -1,3 +1,5 @@
+import {fetchLocationId} from "@/api/data";
+
 export interface IPointsList {
   points: [
     id: number,
@@ -8,12 +10,17 @@ export interface IPointsList {
   ][];
 }
 
-export interface IData {
+export interface IEvent {
+  id: number | string,
   map: string,
   designType: DesignType,
   pointsList: IPointsList['points'],
   loginMessage: string,
   descriptionMessage: string,
+}
+
+export interface IState {
+  event: IEvent | null
 }
 
 export interface IQuiz {
@@ -31,5 +38,6 @@ export enum DesignType {
 
 export enum Types {
   FetchData = 'FETCH_DATA',
+  FetchLocationId = 'FETCH_LOCATION_ID',
   FetchQuiz = 'FETCH_QUIZ'
 }

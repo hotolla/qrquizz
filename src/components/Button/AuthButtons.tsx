@@ -15,13 +15,32 @@ export const AuthButtons = () => {
   useEffect(() => {
     setIsClient(true)
   }, []);
-  const handleSubmit = () => {
-    authApi.login().then((data) => {
-      login(data);
-      console.log(data[0].email);
-      if (data[0].email) router.push('/quiz');
+
+  const googleAuthentication = () => {
+    authApi.redirect().then(({data}) => {
+      console.log(data.google);
     })
   };
+
+  const googleAuthentication2 = ( method: string) => {
+    authApi.redirect2(method).then(({data}) => {
+      console.log(data);
+    })
+  };
+
+  const githubAuthentication = () => {
+    authApi.redirect().then(({data}) => {
+      console.log(data.githab);
+    })
+  };
+
+  // const handleSubmit = () => {
+  //   authApi.login().then((data) => {
+  //     login(data);
+  //     console.log(data[0].email);
+  //     if (data[0].email) router.push('/quiz');
+  //   })
+  // };
 
   return (
     <Stack direction="row" spacing={2} mt="8px">
@@ -30,7 +49,7 @@ export const AuthButtons = () => {
         variant="contained"
         color="info"
         sx={{fontSize: 18, borderRadius: "50px"}}
-        onClick={handleSubmit}
+        onClick={githubAuthentication}
       >
         <GitHubIcon color="primary"/>
       </Button>
@@ -39,7 +58,7 @@ export const AuthButtons = () => {
         variant="contained"
         color="error"
         sx={{fontSize: 18, borderRadius: "50px"}}
-        onClick={handleSubmit}
+        onClick={() => googleAuthentication2('google')}
       >
         <GoogleIcon color="primary"/>
       </Button>

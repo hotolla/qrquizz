@@ -1,25 +1,34 @@
-import { useContext } from "react";
+'use client';
+
 import Image from "next/image";
-import { DataContext } from "@/components/DataProvider";
+import { useContext, useEffect } from "react";
+import { useSearchParams } from 'next/navigation'
 import { Stack, Typography, Box } from "@mui/material";
+import { DataContext } from "@/components/DataProvider";
 import { CustomContainer } from "./CustomContainer";
 import { BasicPopover } from "./BasicPopover";
 
 export const Main = () => {
-  const { map, pointsList } = useContext(DataContext);
+  const searchParams = useSearchParams()
+  const eventId = searchParams?.get('eventId')
+  const { event, fetchEvent } = useContext(DataContext);
 
-  return (
+  useEffect(() => {
+    if (eventId) fetchEvent(eventId);
+  }, [ eventId ]);
+
+  return !!event && (
     <CustomContainer>
       <Typography variant="h1">Location:</Typography>
       <Box style={{ position: 'relative' }}>
 
-        {pointsList.map((point) => (
+        {event?.pointsList?.map((point) => (
           <BasicPopover key={point[4]} left={point[1]} top={point[2]} visited={point[3]} message={point[4]} />
         ))}
 
         <Image
           priority={true}
-          src={map}
+          src={event?.map}
           alt="map"
           width={300}
           height={280}
