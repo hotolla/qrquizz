@@ -1,7 +1,3 @@
-import { Main } from "@/components/Main";
-
 export default function Page() {
-  return (
-    <Main />
-);
+  return <h1>Hello</h1>
 };
