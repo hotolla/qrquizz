@@ -8,15 +8,7 @@ export const login = () => {
 };
 
 export const redirect = () => {
-  return api.get('/authType').then(( data ) => {
-    console.log(data)
-    return data;
-  });
-};
-
-export const redirect2 = (method: string) => {
-  return api.get(`/loginUrl?type=${method}`).then(( data ) => {
-    console.log(method)
+  return api.get('/loginUrl').then(({ data }) => {
     return data;
   });
 };

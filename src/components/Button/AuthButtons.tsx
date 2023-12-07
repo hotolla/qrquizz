@@ -1,49 +1,28 @@
 import * as React from 'react';
 import { useEffect, useState } from "react";
-import { router } from "next/client";
 import * as authApi from '@/api/auth';
 import { Button } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import GoogleIcon from '@mui/icons-material/Google';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { useAuth } from '@/components/AuthProvider';
-import { redirect } from 'next/dist/server/api-utils';
+import { useRouter } from 'next/navigation'
 
 export const AuthButtons = () => {
   const { isAuthenticated, user, login } = useAuth();
   const [ isClient, setIsClient] = useState(false)
+  const router = useRouter()
 
   useEffect(() => {
     setIsClient(true)
   }, []);
 
-  const googleAuthentication = () => {
-    authApi.redirect().then(({data}) => {
-      console.log(data.google);
+  const handleAuthentication = (method: string) => {
+    authApi.redirect().then((data) => {
+      const url = `https://${data[method]}`;
+      router.push(url);
     })
   };
-
-  const googleAuthentication2 = ( method: string) => {
-    authApi.redirect2(method).then(({data}) => {
-      console.log(data);
-      const url = JSON.stringify(data.link);      
-      router.replace(url);
-    })
-  };
-
-  const githubAuthentication = () => {
-    authApi.redirect().then(({data}) => {
-      console.log(data.githab);
-    })
-  };
-
-  // const handleSubmit = () => {
-  //   authApi.login().then((data) => {
-  //     login(data);
-  //     console.log(data[0].email);
-  //     if (data[0].email) router.push('/quiz');
-  //   })
-  // };
 
   return (
     <Stack direction="row" spacing={2} mt="8px">
@@ -52,7 +31,7 @@ export const AuthButtons = () => {
         variant="contained"
         color="info"
         sx={{fontSize: 18, borderRadius: "50px"}}
-        onClick={githubAuthentication}
+        onClick={() => handleAuthentication('github')}
       >
         <GitHubIcon color="primary"/>
       </Button>
@@ -61,7 +40,7 @@ export const AuthButtons = () => {
         variant="contained"
         color="error"
         sx={{fontSize: 18, borderRadius: "50px"}}
-        onClick={() => googleAuthentication2('google')}
+        onClick={() => handleAuthentication('google')}
       >
         <GoogleIcon color="primary"/>
       </Button>

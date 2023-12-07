@@ -13,8 +13,6 @@ export const Header = ({ isDarkTheme, onThemeToggle }: Props) => {
   const { user } = useAuth();
   const [ isClient, setIsClient] = useState(false)
 
-  console.log(user);
-
   const handleLogin = () => {
     router.push("/login");
   };

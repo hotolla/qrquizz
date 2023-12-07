@@ -1,6 +1,6 @@
 import { AxiosRequestConfig } from "axios";
 import { api } from "@/api/api";
-import { EventId, LocationId} from "@/components/DataProvider";
+import { EventId, LocationId } from "@/components/DataProvider";
 
 export const fetchEvent = (id: EventId, config?: AxiosRequestConfig) => {
   return api.get(`/events/${id}`, config).then(({ data }) => {

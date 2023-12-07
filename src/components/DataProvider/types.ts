@@ -37,7 +37,7 @@ export enum DesignType {
 }
 
 export enum Types {
-  FetchData = 'FETCH_DATA',
+  FetchEvent = 'FETCH_EVENT',
   FetchLocationId = 'FETCH_LOCATION_ID',
   FetchQuiz = 'FETCH_QUIZ'
 }

@@ -11,7 +11,7 @@ import { BasicPopover } from "./BasicPopover";
 export const Main = () => {
   const searchParams = useSearchParams()
   const eventId = searchParams?.get('eventId') || ""
-  sessionStorage.setItem('eventId', eventId);
+  // sessionStorage.setItem('eventId', eventId);
   const { event, fetchEvent } = useContext(DataContext);
 
   useEffect(() => {

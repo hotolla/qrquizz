@@ -11,7 +11,7 @@ export const Login = () => {
 
   return (
     <>
-      !!event && (
+      {/* {!!event && ( */}
     <CustomContainer>
       <Typography variant="h1">{event?.loginMessage}</Typography>
 
@@ -31,7 +31,7 @@ export const Login = () => {
       <Typography variant="h2" sx={{mt: 0.5}}>Login and have fun!</Typography>
       <Link href="https://www.capgemini.com/pl-pl/polityka-prywatnosci/" style={{textDecoration: "none", marginTop: 4}}>Privacy Policy</Link>
     </CustomContainer>
-  )
+  {/* )} */}
   </>
   )
 

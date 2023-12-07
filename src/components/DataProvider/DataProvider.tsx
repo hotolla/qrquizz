@@ -1,10 +1,8 @@
 import { PropsWithChildren, createContext, useEffect, useReducer, useRef } from 'react';
 import { reducer } from './reducer';
 import { IState, Types } from './types';
-import { IEvent } from "@/components/DataProvider/types";
 import { initialState } from "@/components/DataProvider/initialState";
 import * as dataApi from "../../api/data";
-import {fetchLocationId} from "../../api/data";
 
 export type EventId = number | string
 export type LocationId = number | string
@@ -38,7 +36,7 @@ export const DataProvider = ({ children } : PropsWithChildren) => {
     dataApi.fetchEvent(id, {
       signal: fetchEventAbortController.current.signal
     }).then((event) => {
-      dispatch({ type: Types.FetchData, payload: event });
+      dispatch({ type: Types.FetchEvent, payload: event });
     })
   };
 
@@ -47,7 +45,7 @@ export const DataProvider = ({ children } : PropsWithChildren) => {
       signal: fetchEventAbortController.current.signal
     }).then((event) => {
       // add reducer, check db.json
-      dispatch({ type: Types.FetchData, payload: event });
+      dispatch({ type: Types.FetchLocationId, payload: event });
     })
   };
 
