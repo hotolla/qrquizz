@@ -1,8 +1,8 @@
 import * as React from "react";
-import { Map }  from "@/components/Map";
+import { Location }  from "@/components/Location";
 
 export default function Main() {
   return (
-    <Map />
+    <Location />
   );
 };

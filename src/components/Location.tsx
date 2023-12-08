@@ -8,21 +8,21 @@ import { DataContext } from "@/components/DataProvider";
 import { CustomContainer } from "./CustomContainer";
 import { BasicPopover } from "./BasicPopover";
 
-export const Main = () => {
+export const Location = () => {
   const searchParams = useSearchParams()
-  const eventId = searchParams?.get('eventId') || ""
+  const locationId = searchParams?.get('locationId') || ""
   // sessionStorage.setItem('eventId', eventId);
-  const { event, fetchEvent } = useContext(DataContext);
+  const { event, fetchLocationId } = useContext(DataContext);
 
   useEffect(() => {
-    if (eventId) fetchEvent(eventId);
-  }, [ eventId ]);
+    if (locationId) fetchLocationId(locationId);
+  }, [ locationId ]);
 
   return (
     <>
       {!!event && (
         <CustomContainer>
-          <Typography variant="h1">Location:</Typography>
+          <Typography variant="h1">Location visited!!!:</Typography>
           <Box style={{ position: 'relative' }}>
 
             {event?.pointsList?.map((point) => (

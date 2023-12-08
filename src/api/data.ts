@@ -8,8 +8,9 @@ export const fetchEvent = (id: EventId, config?: AxiosRequestConfig) => {
   });
 };
 
-export const fetchLocationId = (id: LocationId, config?: AxiosRequestConfig) => {
-  return api.get(`/locations/${id}`, config).then(({ data }) => {
+export const fetchLocationId = (locationId: LocationId, config?: AxiosRequestConfig) => {
+  // return api.get(`/events/locations/${locationId}`, config).then(({ data }) => {
+    return api.get(`/events/${locationId}`, config).then(({ data }) => {
     return data;
   });
 };

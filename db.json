@@ -15,7 +15,7 @@
   "events": [
     {
       "id": 1,
-      "locationId": ["1", "2", "3", "4"],
+      "locationId": "1",
       "map": "/images/exhibitionfloor.png",
       "designType": "DUCK",
       "pointsList": [
