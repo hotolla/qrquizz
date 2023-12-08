@@ -7,8 +7,8 @@ export const login = () => {
   });
 };
 
-export const redirect = () => {
-  return api.get('/loginUrl').then(({ data }) => {
+export const redirect = (method: string) => {
+  return api.get(`/oauth2authorization`).then(({ data }) => {
     return data;
   });
 };

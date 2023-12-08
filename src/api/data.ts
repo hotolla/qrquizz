@@ -1,6 +1,6 @@
 import { AxiosRequestConfig } from "axios";
 import { api } from "@/api/api";
-import { EventId, LocationId } from "@/components/DataProvider";
+import { EventId, LocationId, IUser } from "@/components/DataProvider/types"
 
 export const fetchEvent = (id: EventId, config?: AxiosRequestConfig) => {
   return api.get(`/events/${id}`, config).then(({ data }) => {
@@ -12,6 +12,31 @@ export const fetchLocationId = (locationId: LocationId, config?: AxiosRequestCon
   // return api.get(`/events/locations/${locationId}`, config).then(({ data }) => {
     return api.get(`/events/${locationId}`, config).then(({ data }) => {
     return data;
+  });
+};
+
+// delete ? in params
+export const fetchQuestion = (userEmail?: IUser['email'], locationId?: LocationId, config?: AxiosRequestConfig) => {
+  // request according to descr:
+  // return api.get(`/api/questions?userEmail=${userEmail}&locationId=${locationId}`, config).then(({ data }) => {
+  //   return data;
+  
+  // request according to db.json:
+  return api.get('/questions', config).then(({ data }) => {
+    console.log(data);
+    return data;
+  });
+};
+
+export const sendAnsweredQuestion = (answer: string, userEmail?: IUser['email'],  config?: AxiosRequestConfig) => {
+  // request according to descr:
+  return api.get(`/api/questions/{questionId}/check?answer=${answer}&userEmail=${userEmail}`, config).then(({ data }) => {
+    return data;
+  
+  // request according to db.json:
+  // return api.get('/questions', config).then(({ data }) => {
+  //   console.log(data);
+  //   return data;
   });
 };
 

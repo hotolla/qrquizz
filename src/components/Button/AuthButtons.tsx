@@ -18,9 +18,8 @@ export const AuthButtons = () => {
   }, []);
 
   const handleAuthentication = (method: string) => {
-    authApi.redirect().then((data) => {
-      const url = `https://${data[method]}`;
-      router.push(url);
+    authApi.redirect(method).then((user) => {
+    sessionStorage.setItem('user', user);
     })
   };
 

@@ -1,11 +1,8 @@
 import { PropsWithChildren, createContext, useEffect, useReducer, useRef } from 'react';
 import { reducer } from './reducer';
-import { IState, Types } from './types';
+import { IState, Types, EventId, LocationId } from './types';
 import { initialState } from "@/components/DataProvider/initialState";
 import * as dataApi from "../../api/data";
-
-export type EventId = number | string
-export type LocationId = number | string
 
 interface IDataProviderValues extends IState {
   fetchEvent: (id: EventId) => void;

@@ -23,6 +23,12 @@ export interface IState {
   event: IEvent | null
 }
 
+export interface IUser {
+  email: string,
+  listOfVisitedLoctaions: string,
+  recievedCode: string,
+}
+
 export interface IQuiz {
   questionsId: number,
   questionMessage: string,
@@ -41,3 +47,6 @@ export enum Types {
   FetchLocationId = 'FETCH_LOCATION_ID',
   FetchQuiz = 'FETCH_QUIZ'
 }
+
+export type EventId = number | string
+export type LocationId = number | string

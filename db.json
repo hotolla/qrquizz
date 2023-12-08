@@ -1,17 +1,16 @@
 {
   "users": [
     {
-      "name": "user1",
       "email": "user1@gmail.com",
-      "location": ["1", "2", "3", "4"],
-      "answeredQuestion": 0
+      "listOfVisitedLoctaions": ["1", "2", "3", "4"],
+      "recievedCode": 0
     }
   ],
-  "quiz": {
+  "questions": {
     "questionsId": 1,
     "questionMessage": "question message 1",
     "questionAnswers": ["answer 1", "answer 2", "answer 3"]
-  },
+    },
   "events": [
     {
       "id": 1,
@@ -38,12 +37,13 @@
     "google": "google.com",
     "github": "github.com"
   },
-  "token": {
-      "name": "user1",
-      "email": "user1@gmail.com",
-      "locations": [
-        "1", "2", "3"
-      ],
-      "answeredQuestion": 0
-  }
+  "oauth2authorization": {
+        "name": "user1",
+        "email": "user1@gmail.com",
+        "locations": [
+          "1", "2", "3"
+        ],
+        "answeredQuestion": 0
+    }
+
 }
