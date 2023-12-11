@@ -30,13 +30,15 @@ export const fetchQuestion = (userEmail?: IUser['email'], locationId?: LocationI
 
 export const sendAnsweredQuestion = (answer: string, userEmail?: IUser['email'],  config?: AxiosRequestConfig) => {
   // request according to descr:
+  console.log(answer);
+  
   return api.get(`/api/questions/{questionId}/check?answer=${answer}&userEmail=${userEmail}`, config).then(({ data }) => {
     return data;
   
   // request according to db.json:
   // return api.get('/questions', config).then(({ data }) => {
-  //   console.log(data);
-  //   return data;
+  //   console.log(answer, data);
+  //   return "SUCCESS";
   });
 };
 

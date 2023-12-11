@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/router";
-import { Button, FormControl, Typography } from '@mui/material';
+import { Button, FormControl, Typography, RadioGroup, FormControlLabel, Radio } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { CustomContainer } from '../../components/CustomContainer';
 import { IQuiz } from '@/components/DataProvider/types';
@@ -14,7 +14,7 @@ const RadioButton = styled(Button)({
 });
 
 export default function Quiz() {
-  const [ value, setValue ] = useState({});
+  const [ value, setValue ] = useState('');
   const [ question, setQuestion ] = useState<IQuiz>(
     {
     questionsId: 0,
@@ -25,57 +25,47 @@ export default function Quiz() {
   
   const router = useRouter();
 
+// add  userEmail?: IUser['email'], locationId?
     useEffect(() => {
     fetchQuestion().then((data) => {
       setQuestion(data);
       console.log(value);
     });
   }, []);
+  console.log(value);
+  
 
-  const handleButtonClick = (selectedValue: string) => {
-    setValue(selectedValue);
+  const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(event);
+    
+    setValue((event.target as HTMLInputElement).value);
   };
-
   
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(event);
-    
-    // sendAnsweredQuestion(event.target.);
-    if (value === 'correct') {
-      router.push("/");
-    }  else {
-      router.push("/error");
-    }
+    console.log(value, event);
+    sendAnsweredQuestion(value);
   };
 
   return (
     <CustomContainer>
 
-      <form onSubmit={(value) => handleSubmit(value)}>
+      <form onSubmit={handleSubmit}>
         <FormControl sx={{ m: 3 }} variant="standard">
           
           <Typography variant="h3" mb={2}>{question.questionMessage}</Typography>
             
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16}}>
             
-            <RadioButton color='success' variant='outlined'
-              onClick={() => handleButtonClick(`${question.questionAnswers[0]}`)}
+            <RadioGroup
+              name="quiz"
+              value={value}
+              onChange={handleRadioChange}
             >
-              The correct!
-            </RadioButton>
-
-            <RadioButton color='success' variant='outlined'
-              onClick={() => handleButtonClick(`${question.questionAnswers[1]}`)}
-              >
-              {question.questionAnswers[1]}
-            </RadioButton>
-            
-            <RadioButton color='success' variant='outlined'
-              onClick={() => handleButtonClick(`${question.questionAnswers[2]}`)}
-              >
-              {question.questionAnswers[2]}
-            </RadioButton>
+              <FormControlLabel value={question.questionAnswers[0]} control={<Radio color='success' />} label={question.questionAnswers[0]} />
+              <FormControlLabel value={question.questionAnswers[1]} control={<Radio color='success' />} label={question.questionAnswers[1]} />
+              <FormControlLabel value={question.questionAnswers[2]} control={<Radio color='success' />} label={question.questionAnswers[2]} />
+            </RadioGroup>
           </div>
 
           <Button sx={{ mt: 2, borderRadius: "50px" }} type="submit" variant="contained" color="success">

@@ -41,6 +41,13 @@ export enum DesignType {
   Type3 = "TYPE3",
   Type4 = "TYPE4",
 }
+// SUCCESS/RETRY/FAIL
+
+export enum AnswerType {
+  Success = "SUCCESS",
+  Retry = "RETRY",
+  Fail = "FAIL",
+}
 
 export enum Types {
   FetchEvent = 'FETCH_EVENT',
